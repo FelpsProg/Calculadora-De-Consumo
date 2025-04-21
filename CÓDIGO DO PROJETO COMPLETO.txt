@@ -1,0 +1,81 @@
+PROJETO 1 - CALCULADORA DE COMBUSTIVEL
+
+PARTE 1 - HTML
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Consumo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Calculadora de Consumo (km/l)</h1>
+    <input type="number" id="km" placeholder="Quilômetros percorridos" />
+    <input type="number" id="litros" placeholder="Litros abastecidos" />
+    <button onclick="calcular()">Calcular</button>
+    <p id="resultado"></p>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+PARTE 2 - CSS
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input {
+  margin: 10px;
+  padding: 10px;
+  width: 80%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #004f99;
+}
+
+
+PARTE 3 - JAVASCRIPT
+
+function calcular() {
+  const km = parseFloat(document.getElementById('km').value);
+  const litros = parseFloat(document.getElementById('litros').value);
+  const resultado = document.getElementById('resultado');
+
+  if (!km || !litros || litros === 0) {
+    resultado.innerText = 'Por favor, insira valores válidos.';
+    return;
+  }
+
+  const consumo = km / litros;
+  resultado.innerText = `Consumo médio: ${consumo.toFixed(2)} km/l`;
+}
