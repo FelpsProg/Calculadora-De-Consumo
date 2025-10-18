@@ -11,71 +11,108 @@ PARTE 1 - HTML
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Container principal da calculadora -->
+
   <div class="container">
     <h1>Calculadora de Consumo (km/l)</h1>
+
+    <!-- Campo para o usuário digitar os quilômetros percorridos -->
+
     <input type="number" id="km" placeholder="Quilômetros percorridos" />
+
+    <!-- Campo para o usuário digitar a quantidade de litros abastecidos -->
+
     <input type="number" id="litros" placeholder="Litros abastecidos" />
+
+    <!-- Botão que chama a função calcular() ao ser clicado -->
+
     <button onclick="calcular()">Calcular</button>
+
+    <!-- Aqui será exibido o resultado do cálculo -->
+
     <p id="resultado"></p>
   </div>
+
+  <!-- Importando o arquivo JavaScript -->
+
   <script src="script.js"></script>
 </body>
 </html>
 
-
 PARTE 2 - CSS
 
+/* Estilo geral da página */
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
+      font-family: Arial, sans-serif; - /* Define a fonte padrão */
+      background-color: #f4f4f4;      - /* Cor de fundo clara */
+      display: flex;                  - /* Centraliza o conteúdo */
+      justify-content: center;
+      align-items: center;
+      height: 100vh;                  - /* Ocupa a altura total da tela */
+     }
+
+/* Caixa principal da calculadora */
 
 .container {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+              background: white; - /* Fundo branco */
+              padding: 20px;
+              border-radius: 10px; - /* Bordas arredondadas */
+              text-align: center;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); - /* Sombra suave para destacar */
+            }
+
+/* Campos de entrada (inputs) */
 
 input {
-  margin: 10px;
-  padding: 10px;
-  width: 80%;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
+        margin: 10px;
+        padding: 10px;
+        width: 80%; - /* Largura ajustada dentro do container */
+        border-radius: 5px;
+        border: 1px solid #ccc; - /* Borda cinza clara */
+      }
+
+/* Botão principal */
 
 button {
-  padding: 10px 20px;
-  background-color: #0066cc;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
+        padding: 10px 20px;
+        background-color: #0066cc; - /* Azul padrão */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+/* Efeito visual ao passar o mouse no botão */
 
 button:hover {
-  background-color: #004f99;
-}
-
+              background-color: #004f99; - /* Azul mais escuro */
+             }
 
 PARTE 3 - JAVASCRIPT
 
+// Função responsável por calcular o consumo médio de combustível
+
 function calcular() {
-  const km = parseFloat(document.getElementById('km').value);
-  const litros = parseFloat(document.getElementById('litros').value);
-  const resultado = document.getElementById('resultado');
+                      // Pegando os valores digitados pelo usuário e convertendo para número decimal
 
-  if (!km || !litros || litros === 0) {
-    resultado.innerText = 'Por favor, insira valores válidos.';
-    return;
-  }
+                       const km = parseFloat(document.getElementById('km').value);
+                       const litros = parseFloat(document.getElementById('litros').value);
+                       const resultado = document.getElementById('resultado');
 
-  const consumo = km / litros;
-  resultado.innerText = `Consumo médio: ${consumo.toFixed(2)} km/l`;
-}
+                      // Validação simples: se os valores forem inválidos ou zero, mostra mensagem de erro
+
+                        if (!km || !litros || litros === 0) {  
+                            resultado.innerText = 'Por favor, insira valores válidos.';
+                            return; - // Interrompe a função aqui
+                                                            }
+
+                        // Faz o cálculo dividindo a distância pelos litros abastecidos
+
+                        const consumo = km / litros;
+
+                        // Exibe o resultado formatado com 2 casas decimais
+
+                        resultado.innerText = `Consumo médio: ${consumo.toFixed(2)} km/l`;
+                    }
+
